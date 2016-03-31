@@ -29,6 +29,7 @@ $cont = '<ul>';
 			//echo '' . get_the_title() . '<br />';
 		}
 		$cont .= '</ul>';
+		return $cont;
 	// Restore original Post Data
 	wp_reset_postdata();
 }
