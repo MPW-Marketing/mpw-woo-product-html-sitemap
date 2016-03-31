@@ -21,15 +21,14 @@ function print_sitemap_pages ($atts) {
 	        'orderby' => 'title',
 	    );
 		$the_query = new WP_Query( $args );
-			echo '<pre>';
-			print_r($the_query);
-			echo '</pre>';
-
+$cont = '<ul>';
 		// The Loop
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
-			echo '' . get_the_title() . '<br />';
+			$cont .= '<li>'.get_permalink().'</li>';
+			//echo '' . get_the_title() . '<br />';
 		}
+		$cont .= '</ul>';
 	// Restore original Post Data
 	wp_reset_postdata();
 }
