@@ -13,19 +13,20 @@ function print_sitemap_pages ($atts) {
 			'product_cat' => '',
 			'depth' => '',
 		), $atts, 'print_sitemap_pages' );
-
+$prod_cat = $atts['product_cat'];
 	$args = array(
 	        'posts_per_page' => -1,
-	        'product_cat' => $atts['product_cat'],
+	        'product_cat' => $prod_cat,
 	        'post_type' => 'product',
-	        'orderby' => 'title',
+	        'orderby' => 'menu_order',
 	    );
+	
 		$the_query = new WP_Query( $args );
-$cont = '<ul>';
+$cont = '<ul class="sitemap-list '.$prod_cat.'-sitemap-list">';
 		// The Loop
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
-			$cont .= '<li><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
+			$cont .= '<li class="sitemap-item"><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
 			//echo '' . get_the_title() . '<br />';
 		}
 		$cont .= '</ul>';
