@@ -25,7 +25,7 @@ $cont = '<ul>';
 		// The Loop
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
-			$cont .= '<li>'.get_permalink().'</li>';
+			$cont .= '<li><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
 			//echo '' . get_the_title() . '<br />';
 		}
 		$cont .= '</ul>';
