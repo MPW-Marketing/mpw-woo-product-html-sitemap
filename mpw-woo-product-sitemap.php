@@ -24,7 +24,10 @@ function print_sitemap_pages ($atts) {
 		// The Loop
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
-			echo '' . get_the_title() . '<br /><br />';
+			echo '<pre>';
+			print_r($the_query->the_post());
+			echo '</pre>';
+			echo '' . get_the_title() . '<br />';
 		}
 }
 add_shortcode( 'product_sitemap', 'print_sitemap_pages' );
