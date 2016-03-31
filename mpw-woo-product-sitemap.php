@@ -21,13 +21,16 @@ function print_sitemap_pages ($atts) {
 	        'orderby' => 'title',
 	    );
 		$the_query = new WP_Query( $args );
+			echo '<pre>';
+			print_r($the_query);
+			echo '</pre>';
+
 		// The Loop
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
-			echo '<pre>';
-			print_r($the_query->the_post());
-			echo '</pre>';
 			echo '' . get_the_title() . '<br />';
 		}
+	// Restore original Post Data
+	wp_reset_postdata();
 }
 add_shortcode( 'product_sitemap', 'print_sitemap_pages' );
